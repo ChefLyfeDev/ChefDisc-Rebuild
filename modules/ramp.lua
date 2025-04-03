@@ -591,14 +591,7 @@ function ramp.execute_ramp(local_player, heal_targets_list, menu_elements)
     
     -- Phase 1: Apply shields to as many targets as possible
     if ramp.ramp_phase == 1 then
-        -- Check if we should cast Rapture first (only for full ramps)
-        if not ramp.is_mini_ramp and menu_elements.enable_rapture:get_state() then
-            local rapture_active = utility.cast_rapture(local_player, menu_elements.enable_rapture:get_state())
-            if rapture_active then
-                return true
-            end
-        end
-        
+
         -- Shield as many targets as possible
         for _, target in ipairs(heal_targets_list) do
             if utility.cast_power_word_shield(local_player, target, menu_elements.enable_shield:get_state()) then

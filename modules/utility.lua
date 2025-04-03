@@ -23,7 +23,6 @@ utility.last_cast_times = {
     pain_suppression = 0.0,
     power_word_radiance = 0.0,
     power_infusion = 0.0,
-    rapture = 0.0,
     evangelism = 0.0,
     spirit_shell = 0.0,
     mindbender = 0.0,
@@ -421,18 +420,17 @@ function utility.cast_power_word_shield(local_player, target, enable_spell)
         return false
     end
     
-    -- Check if target already has Weakened Soul (unless Rapture is active)
-    local rapture_active = buff_manager:get_buff_data(local_player, constants.buff_ids.RAPTURE).is_active
-    if not rapture_active then
+    -- Check if target already has Weakened Soul
+    
         local weakened_soul_data = buff_manager:get_debuff_data(target, constants.buff_ids.WEAKENED_SOUL)
         if weakened_soul_data.is_active then
             return false
         end
     end
     
-    -- Check if target already has shield (refresh if in Rapture)
+    -- Check if target already has shield
     local shield_data = buff_manager:get_buff_data(target, constants.buff_ids.POWER_WORD_SHIELD)
-    if shield_data.is_active and not rapture_active then
+    if shield_data.is_active then
         return false
     end
     
@@ -568,28 +566,6 @@ function utility.cast_power_infusion(local_player, target, enable_spell)
     return true
 end
 
-function utility.cast_rapture(local_player, enable_spell)
-    if not local_player or not local_player:is_valid() then return false end
-    
-    if not enable_spell then
-        return false
-    end
-    
-    local time = core.time()
-    if time - utility.last_cast_times.rapture < 0.20 then
-        return false
-    end
-    
-    -- Check if spell is castable
-    local is_spell_ready = spell_helper:is_spell_castable(constants.spell_data.rapture.id, local_player, local_player, false, false)
-    if not is_spell_ready then
-        return false
-    end
-    
-    spell_queue:queue_spell_target(constants.spell_data.rapture.id, local_player, 1, "Casting Rapture")
-    utility.last_cast_times.rapture = time
-    return true
-end
 
 function utility.cast_evangelism(local_player, enable_spell, heal_targets, is_ramping)
     if not local_player or not local_player:is_valid() then return false end

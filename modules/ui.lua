@@ -83,7 +83,6 @@ ui.menu_elements = {
     enable_shadowmend = core.menu.checkbox(true, "enable_shadowmend"),
     enable_penance_heal = core.menu.checkbox(true, "enable_penance_heal"),
     enable_pain_suppression = core.menu.checkbox(true, "enable_pain_suppression"),
-    enable_rapture = core.menu.checkbox(true, "enable_rapture"),
     enable_power_word_radiance = core.menu.checkbox(true, "enable_power_word_radiance"),
     enable_evangelism = core.menu.checkbox(true, "enable_evangelism"),
     
@@ -214,7 +213,6 @@ function ui.render_menu()
             ui.menu_elements.enable_penance_heal:render("Enable Penance (Healing)")
             ui.menu_elements.enable_pain_suppression:render("Enable Pain Suppression")
             ui.menu_elements.enable_power_word_radiance:render("Enable Power Word: Radiance")
-            ui.menu_elements.enable_rapture:render("Enable Rapture")
             ui.menu_elements.enable_evangelism:render("Enable Evangelism")
         end)
 

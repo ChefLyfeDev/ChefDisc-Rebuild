@@ -12,7 +12,6 @@ constants.buff_ids = {
     SHADOW_WORD_PAIN = enums.buff_db.SHADOW_WORD_PAIN, -- Replaced Purge the Wicked
     POWER_OF_THE_DARK_SIDE = enums.buff_db.POWER_OF_THE_DARK_SIDE,
     POWER_WORD_SHIELD = enums.buff_db.POWER_WORD_SHIELD,
-    RAPTURE = 47536, -- Not in buff_db, use direct ID
     POWER_INFUSION = 10060, -- Direct ID
     SPIRIT_SHELL = 109964, -- Direct ID
     
@@ -131,10 +130,6 @@ constants.spell_data = {
         name = "Power Infusion",
         range = 40
     },
-    rapture = {
-        id = 47536,
-        name = "Rapture",
-        range = 0
     },
     evangelism = {
         id = 246287,
